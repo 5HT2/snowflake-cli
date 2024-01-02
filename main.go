@@ -3,10 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"time"
 
 	"github.com/5HT2/snowflake-cli/util"
-	"github.com/bwmarrin/snowflake"
 )
 
 var (
@@ -24,10 +22,9 @@ func main() {
 	}
 
 	if *twitterEpoch != true {
-		snowflake.Epoch = util.DiscordEpoch
+		util.IsTwitter = true
 	}
 
-	id := snowflake.ParseInt64(*snowflakeInput)
-	st := util.SnowflakeTime{Time: time.UnixMilli(id.Time())}
-	fmt.Printf("%s\n", st.FormatSnowflake(*formatStr))
+	s := util.NewSnowflake(*snowflakeInput)
+	fmt.Printf("%s\n", s.FormatSnowflake(*formatStr))
 }

@@ -10,6 +10,10 @@ type SnowflakeTime struct {
 	time.Time
 }
 
+func NewSnowflake(snowflake int64) SnowflakeTime {
+	return SnowflakeTime{Time: time.UnixMilli(Snowflake(snowflake).UnixMilli())}
+}
+
 func (t SnowflakeTime) FormatUnix() string {
 	return fmt.Sprintf("%v", t.UnixMilli())
 }

@@ -1,11 +1,5 @@
 package util
 
-const (
-	// DiscordEpoch is set to the Discord snowflake epoch of Jan 01 2015 00:00:00 UTC in milliseconds
-	// Docs: https://discord.com/developers/docs/reference#snowflakes-snowflake-id-format-structure-left-to-right
-	DiscordEpoch = 1420070400000
-)
-
 // DiscordFormat defaults to DiscordFormatShortDateTime
 // Docs: https://discord.com/developers/docs/reference#message-formatting-timestamp-styles
 type DiscordFormat int64
