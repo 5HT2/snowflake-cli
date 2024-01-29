@@ -21,7 +21,7 @@ func main() {
 		return
 	}
 
-	if *twitterEpoch != true {
+	if *twitterEpoch {
 		util.IsTwitter = true
 	}
 
