@@ -9,7 +9,7 @@ Easily format Discord and Twitter Snowflakes.
 make
 
 # Format default
-./snowflake -s 1191470808191737927
+./snowflake 1191470808191737927
 # 1704139177130 - 2024-01-01T20:59:37+01:00
 
 # Format in a custom timezone
