@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"strconv"
 
 	"github.com/5HT2/snowflake-cli/util"
 )
@@ -16,6 +17,14 @@ var (
 func main() {
 	flag.Parse()
 
+	// If the user didn't set it with -s, try grabbing it from the last arg
+	if *snowflakeInput == 0 && len(flag.Args()) > 0 {
+		if i, err := strconv.Atoi(flag.Args()[len(flag.Args())-1]); err == nil {
+			*snowflakeInput = int64(i)
+		}
+	}
+
+	// Either the last arg contained a snowflake without -s, or it didn't, either way the user messed up the command
 	if *snowflakeInput == 0 {
 		flag.Usage()
 		return
