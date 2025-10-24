@@ -18,6 +18,10 @@ func (t SnowflakeTime) FormatUnix() string {
 	return fmt.Sprintf("%v", t.UnixMilli())
 }
 
+func (t SnowflakeTime) FormatUnixSeconds() string {
+	return fmt.Sprintf("%v", t.Unix())
+}
+
 func (t SnowflakeTime) FormatPretty() string {
 	t.Location()
 	return t.Format(time.RFC3339)
@@ -30,6 +34,7 @@ func (t SnowflakeTime) FormatTimestamp(f DiscordFormat) string {
 func (t SnowflakeTime) FormatSnowflake(s string) string {
 	s = strings.ReplaceAll(s, "%%", "{%}")
 	s = strings.ReplaceAll(s, "%u", t.FormatUnix())
+	s = strings.ReplaceAll(s, "%s", t.FormatUnixSeconds())
 	s = strings.ReplaceAll(s, "%p", t.FormatPretty())
 	s = strings.ReplaceAll(s, "%t:t", t.FormatTimestamp(DiscordFormatShortTime))
 	s = strings.ReplaceAll(s, "%t:T", t.FormatTimestamp(DiscordFormatLongTime))
